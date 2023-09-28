@@ -2,16 +2,15 @@ import React from 'react';
 import { Dimensions, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { Product } from '../Typings/Products';
 import FastImage from 'react-native-fast-image';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { addToCart } from '../store/reducers/cart';
 
-interface ProductCardProps {
+export interface ProductCardProps {
     item: Product
 }
 
 export const ProductCard = ({item}: ProductCardProps) => {
   const dispatch = useDispatch();
-  const { products } = useSelector((state) => state.cart);
   return (
     <View style={styles.cardContainer}>
       <FastImage
@@ -31,6 +30,7 @@ export const ProductCard = ({item}: ProductCardProps) => {
       <Text style={styles.price}>{item.colour}</Text>
       <TouchableOpacity
         activeOpacity={1}
+        accessibilityLabel='add to cart'
         style={styles.addToCartButton}
         onPress={() => dispatch(addToCart(item))}
       >

@@ -11,7 +11,11 @@ import {it} from '@jest/globals';
 
 // Note: test renderer must be required after react-native.
 import renderer from 'react-test-renderer';
+import { renderWithProviders } from '../src/utils/test-utils';
+import { screen } from '@testing-library/react-native';
 
 it('renders correctly', () => {
-  renderer.create(<App />);
+  renderWithProviders(<App />);
+  const linkElement = screen.getByText(/Cart/i);
+  expect(linkElement).toBeDefined();
 });

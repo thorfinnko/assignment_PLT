@@ -1,10 +1,10 @@
-import { combineReducers, configureStore } from '@reduxjs/toolkit';
+import { combineReducers, configureStore, PreloadedState } from '@reduxjs/toolkit';
 import products from './reducers/products';
 import cart from './reducers/cart';
 import createSagaMiddleware from '@redux-saga/core';
 import sagas from './sagas';
 
-const rootReducer = combineReducers({
+export const rootReducer = combineReducers({
   products: products,
   cart: cart,
 });

@@ -12,11 +12,6 @@ const axiosInstance = axios.create({
 axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 axios.defaults.headers.common['Content-Type'] = 'application/json';
 
-const removeTags = (html: string | unknown) => {
-  if (typeof html === 'string') return html.replace(/<\/?[^>]+(>|$)/g, '');
-  return html;
-};
-
 axiosInstance.interceptors.request.use(
   async (config: AxiosRequestConfig) => {
     const apiConfig = config;
