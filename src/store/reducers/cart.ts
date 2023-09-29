@@ -14,7 +14,12 @@ const cartSlice = createSlice({
   initialState,
   reducers: {
     addToCart: (state, action) => {
-      state.products = [...state.products, action.payload];
+      const newProduct = action.payload;
+      const productIndex = state.products.findIndex((item) => item.id === newProduct.id);
+
+      if (productIndex === -1) {
+        state.products = [...state.products, newProduct];
+      }
     },
     removeFromCart: (state, action) => {
       state.products = state.products.filter((item) => item.id != action.payload.id);
