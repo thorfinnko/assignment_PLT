@@ -6,10 +6,10 @@ import { useDispatch } from 'react-redux';
 import { addToCart } from '../store/reducers/cart';
 
 export interface ProductCardProps {
-    item: Product
+  item: Product;
 }
 
-export const ProductCard = ({item}: ProductCardProps) => {
+export const ProductCard = ({ item }: ProductCardProps) => {
   const dispatch = useDispatch();
   return (
     <View style={styles.cardContainer}>
@@ -23,14 +23,12 @@ export const ProductCard = ({item}: ProductCardProps) => {
       />
       <Text style={styles.description}>{item.name}</Text>
       <Text style={styles.price}>
-        {new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'GBP' }).format(
-          item.price
-        )}
+        {new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'GBP' }).format(item.price)}
       </Text>
       <Text style={styles.price}>{item.colour}</Text>
       <TouchableOpacity
         activeOpacity={1}
-        accessibilityLabel='add to cart'
+        accessibilityLabel="add to cart"
         style={styles.addToCartButton}
         onPress={() => dispatch(addToCart(item))}
       >

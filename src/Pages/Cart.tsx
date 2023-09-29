@@ -18,9 +18,11 @@ function Cart() {
         />
         <View style={{ position: 'absolute', bottom: 0, width: Dimensions.get('screen').width }}>
           <PriceBottomHeader
-            price={products.reduce((a, b) => {
-              return a + b?.price;
-            }, 0) || 0}
+            price={
+              products.reduce((a, b) => {
+                return a + b?.price;
+              }, 0) || 0
+            }
           />
         </View>
       </View>
@@ -28,11 +30,10 @@ function Cart() {
   }
 
   return (
-    <View style={{flex:1, justifyContent:'center', alignItems:'center'}}>
+    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
       <Text>No Product Added to cart</Text>
     </View>
-  )
-
+  );
 }
 
 export default Cart;

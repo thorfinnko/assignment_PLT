@@ -13,10 +13,10 @@ function BottomTabs() {
         headerStyle: { backgroundColor: '#fdbedb' },
         headerTintColor: '#fff',
         tabBarIcon: () => {
-          console.log(route.name, 'route.name')
+          console.log(route.name, 'route.name');
           let icon;
           if (route.name === 'Products') {
-            icon =  <ProductListIcon />
+            icon = <ProductListIcon />;
           } else if (route.name === 'Cart') {
             icon = <CartIcon />;
           }
