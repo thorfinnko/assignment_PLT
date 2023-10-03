@@ -31,9 +31,26 @@ const productSlice = createSlice({
       state.loading = false;
       state.isError = true;
     },
+    updateProducts: (state: productInitialState, action: PayloadAction<Product>) => {
+      state.products = state.products.filter((item) => item.id != action.payload.id);
+    },
+    addToProducts: (state, action) => {
+      const newProduct = action.payload;
+      const productIndex = state.products.findIndex((item) => item.id === newProduct.id);
+
+      if (productIndex === -1) {
+        state.products = [...state.products, newProduct];
+      }
+    },
   },
 });
 
-export const { fetchProducts, fetchProductsSuccess, fetchProductsFailure } = productSlice.actions;
+export const {
+  fetchProducts,
+  fetchProductsSuccess,
+  fetchProductsFailure,
+  updateProducts,
+  addToProducts,
+} = productSlice.actions;
 
 export default productSlice.reducer;

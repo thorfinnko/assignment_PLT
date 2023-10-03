@@ -4,6 +4,7 @@ import { Product } from '../Typings/Products';
 import FastImage from 'react-native-fast-image';
 import { useDispatch, useSelector } from 'react-redux';
 import { addToCart, removeFromCart } from '../store/reducers/cart';
+import { addToProducts } from '../store/reducers/products';
 
 interface CartCardProps {
   item: Product;
@@ -30,7 +31,10 @@ export const CartCard = ({ item }: CartCardProps) => {
       <TouchableOpacity
         activeOpacity={1}
         style={styles.addToCartButton}
-        onPress={() => dispatch(removeFromCart(item))}
+        onPress={() => {
+          dispatch(addToProducts(item))
+          dispatch(removeFromCart(item))
+        }}
       >
         <Text style={{ fontSize: 12, color: 'white' }}>Remove</Text>
       </TouchableOpacity>
